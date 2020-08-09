@@ -21,8 +21,8 @@ int main() {
     std::mt19937 generator(system_clock::now().time_since_epoch().count());
 
     while (diff_heap.count() >= diff_stack.count()) {
-        int* _stack = (int*)alloca(i * 8);
-        int* _heap  = (int*)malloc(i * 8);
+        int* _stack = (int*)alloca(i);
+        int* _heap  = (int*)malloc(i);
 
         // 1024 / 4 = 256, as sizeof(int) = 4
         for (size_t j = 0; j < 256 * i; ++j)
@@ -41,7 +41,7 @@ int main() {
         end        = steady_clock::now();
         diff_stack = duration_cast<microseconds>(end - start);
 
-    	std::cout << i * 8 << " bytes" << std::endl;
+    	std::cout << i << " bytes" << std::endl;
     	std::cout << "stack: " << diff_stack.count() << std::endl;
     	std::cout << "heap: " << diff_heap.count() << std::endl;
 

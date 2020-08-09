@@ -6,4 +6,8 @@ make
 ```
 in the project directory.
 
-Requires C++17 or newer. Makefile uses g++.
+Requires C++17 or newer. Makefile uses g++. Don't enable optimizations as then the compiler will simply allocate once on stack/heap and there would be no actual comparison as it will keep on running till segfault.
+
+Note that answer will vary each time you run, as it depends on your available system resources.
+
+An interesting point to note is that g++ consistently outperforms reading from stack than clang.
